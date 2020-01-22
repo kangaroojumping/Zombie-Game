@@ -25,6 +25,10 @@ Zombies
 -speed
 -dmg amount
 -score
+-pathfinding
+--binary tree?
+--custom algorithm?
+
 
 Map
 -tile based (square)
