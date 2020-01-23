@@ -1,0 +1,60 @@
+Immediate Needs:
+
+Structure:
+-make our own engine????
+-java fxgl
+-save / load
+
+Player
+-health
+-weapon / ammo
+-score
+-speed
+-inventory (array)
+-actions:
+--shoot
+--pick up item
+--move
+
+Items
+-array of objects able to be picked up by the player
+
+Zombies
+-health
+-size
+-speed
+-dmg amount
+-score
+-pathfinding
+--binary tree?
+--custom algorithm?
+
+
+Map
+-tile based (square)
+-places to spawn zombies
+-number to spawn
+-respawn time
+-save / load
+
+
+
+Later Things to Implement:
+
+Structure
+-difficulty mode
+
+Player
+-stamina
+-armor / shield
+-lives
+-npc teammates
+-flashlight
+-actions
+--dodge roll?
+
+Zombies
+-take knockback on hit
+
+Map
+-day / night cycle
