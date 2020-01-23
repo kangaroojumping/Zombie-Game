@@ -1,3 +1,0 @@
-function onHit() {
-    return "EntityTest";
-}
