@@ -3,6 +3,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import java.awt.*;
 
@@ -47,8 +49,17 @@ public class MapTile extends StackPane {
 
         rect.setStroke(Color.BLACK);
         pane.getChildren().add(rect);
+
         pane.setTranslateX(x * tileSize);
         pane.setTranslateY(y * tileSize);
+
+        /*
+        Text text = new Text("[" + x + ", " + y + "]");
+        text.setTextAlignment(TextAlignment.CENTER);
+        text.setScaleX(.5);
+        text.setScaleY(.5);
+        pane.getChildren().add(text);
+         */
     }
 
     public StackPane getPane(){

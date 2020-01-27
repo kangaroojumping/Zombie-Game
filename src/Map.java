@@ -4,6 +4,8 @@ import javafx.scene.layout.StackPane;
 public class Map {
     private int size_x = 25;
     private int size_y = 25;
+    public int getSize_x(){return size_x;}
+    public int getSize_y(){return size_y;}
     public MapTile[][] tiles;
     private Group panes = new Group();
     public Group getPanes() {return panes;}

@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 
 public class AppWindow extends Application {
+    public Scene currentScene;
 
     public static void main(String[] args) {
         launch(args);
@@ -21,12 +22,14 @@ public class AppWindow extends Application {
         Button btn = new Button("Start Game");
         btn.setOnAction(e -> {
             System.out.println("Starting...");
-            primaryStage.setScene(new Scene(createMap()));
+            primaryStage.setScene(createMap(true));
+            currentScene = primaryStage.getScene();
         });
 
         StackPane root = new StackPane();
         root.getChildren().add(btn);
         primaryStage.setScene(new Scene(root, window_width, window_height));
+        currentScene = primaryStage.getScene();
         //primaryStage.setScene(new Scene(createMap()));
         primaryStage.show();
     }
@@ -34,12 +37,24 @@ public class AppWindow extends Application {
     private static int window_width = 600;
     private static int window_height = 400;
 
-    private Parent createMap(){
+    private Scene createMap(){
         Pane root = new Pane();
         root.setPrefSize(window_width, window_height);
         Map map = new Map();
         root.getChildren().add(map.getPanes());
-        return root;
+        Scene newScene = new Scene(root);
+        return newScene;
+    }
+    private Scene createMap(boolean hasPlayer){
+        Pane root = new Pane();
+        root.setPrefSize(window_width, window_height);
+        Map map = new Map();
+        root.getChildren().add(map.getPanes());
+        Scene newScene = new Scene(root);
+        Player player;
+        if(hasPlayer)
+            player = new Player(newScene, map);
+        return newScene;
     }
 }
 
