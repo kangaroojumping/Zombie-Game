@@ -38,13 +38,6 @@ public class AppWindow extends Application {
         Pane root = new Pane();
         root.setPrefSize(window_width, window_height);
         Map map = new Map();
-        /*
-        for(int i = 0; i < map.tiles.length; i++){
-            for(int j = 0; j < map.tiles[i].length; j++){
-                root.getChildren().add(map.tiles[i][j]);
-            }
-        }
-        */
         root.getChildren().add(map.getPanes());
         return root;
     }

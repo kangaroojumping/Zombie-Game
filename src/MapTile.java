@@ -24,18 +24,7 @@ public class MapTile extends StackPane {
         this.y = y;
         tileType = 0;
         tileName = "ground";
-        /*
-        StackPane stackPane = new StackPane(rect);
-        Group group = new Group();
-        group.getChildren().add(rect);
-        */
-        rect.setFill(Color.WHITE);
-        rect.setStroke(Color.BLACK);
-        pane.getChildren().add(rect);
-
-        pane.setTranslateX(x * tileSize);
-        pane.setTranslateY(y * tileSize);
-
+        createTile();
         //System.out.println("Tile " + x + ", " + y + " created.");
     }
     public MapTile(int x, int y, int type){
@@ -46,11 +35,20 @@ public class MapTile extends StackPane {
             tileName = "ground";
         else if(tileType == 1)
             tileName = "wall";
+        createTile();
+        //System.out.println("Tile " + x + ", " + y + " created.");
+    }
+
+    private void createTile(){
+        if(tileType == 1)
+            rect.setFill(Color.LIGHTGRAY);
+        else
+            rect.setFill(Color.WHITE);
+
         rect.setStroke(Color.BLACK);
         pane.getChildren().add(rect);
         pane.setTranslateX(x * tileSize);
         pane.setTranslateY(y * tileSize);
-        //System.out.println("Tile " + x + ", " + y + " created.");
     }
 
     public StackPane getPane(){
