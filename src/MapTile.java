@@ -21,7 +21,7 @@ public class MapTile extends StackPane {
 
     public MapTile(int x, int y){
         this.x = x;
-        this.y = y;
+        thi s.y = y;
         tileType = 0;
         tileName = "ground";
         createTile();
