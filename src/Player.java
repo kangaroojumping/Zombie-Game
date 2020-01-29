@@ -1,25 +1,44 @@
 import javafx.event.ActionEvent;
+import javafx.scene.*;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import java.util.*;
 
 public class Player {
     private Scene currentScene;
     private int x, y = 0;
+    private int offset = 5;
     private Map map;
+    private Rectangle rect = new Rectangle(MapTile.tileSize - offset, MapTile.tileSize - offset);
+    private Pane pane;
 
-    public Player(Scene scene, Map map){
-        currentScene = scene;
+    public Player(Scene currentScene, Pane pane, Map map){
         this.map = map;
-        movePlayer();
+        this.pane = pane;
+        this.currentScene = currentScene;
+        createPlayer();
     }
 
-    public Player(Scene scene, Map map, int x, int y){
+    public Player(Scene currentScene, Pane pane, Map map, int x, int y){
         this.x = x;
         this.y = y;
         this.map = map;
-        currentScene = scene;
+        this.pane = pane;
+        this.currentScene = currentScene;
+        createPlayer();
+    }
+    public void createPlayer(){
+        pane.getChildren().add(rect);
+        rect.setFill(Color.LIGHTGRAY);
+        rect.setStroke(Color.LIGHTGRAY);
+        rect.setTranslateX(x * MapTile.tileSize + (offset+1) / 2);
+        rect.setTranslateY(y * MapTile.tileSize + (offset+1) / 2);
         movePlayer();
     }
 
@@ -46,9 +65,13 @@ public class Player {
                         x++;
                     }
                 }
+                System.out.println("Key Pressed: "+ ke.getCode());
+                System.out.println("Player is @: ["+x +", "+y +"]");
+                rect.setTranslateX(x * MapTile.tileSize + (offset+1) / 2);
+                rect.setTranslateY(y * MapTile.tileSize + (offset+1) / 2);
             }
         });
-        //System.out.println("Key Pressed: "+ ke.getCode());
-        System.out.println("Player is @: ["+x +", "+y +"]");
+
+
     }
 }

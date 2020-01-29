@@ -1,6 +1,7 @@
 import javafx.application.Application;
-import javafx.scene.Parent;
+import javafx.scene.*;
 import javafx.scene.layout.Pane;
+import javafx.scene.Parent;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -9,8 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 
 public class AppWindow extends Application {
-    public Scene currentScene;
-
     public static void main(String[] args) {
         launch(args);
     }
@@ -23,13 +22,11 @@ public class AppWindow extends Application {
         btn.setOnAction(e -> {
             System.out.println("Starting...");
             primaryStage.setScene(createMap(true));
-            currentScene = primaryStage.getScene();
         });
 
         StackPane root = new StackPane();
         root.getChildren().add(btn);
         primaryStage.setScene(new Scene(root, window_width, window_height));
-        currentScene = primaryStage.getScene();
         //primaryStage.setScene(new Scene(createMap()));
         primaryStage.show();
     }
@@ -53,7 +50,7 @@ public class AppWindow extends Application {
         Scene newScene = new Scene(root);
         Player player;
         if(hasPlayer)
-            player = new Player(newScene, map);
+            player = new Player(newScene, root, map);
         return newScene;
     }
 }
