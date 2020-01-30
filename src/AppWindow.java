@@ -39,7 +39,48 @@ public class AppWindow extends Application {
         root.setPrefSize(window_width, window_height);
         Map map = new Map();
         root.getChildren().add(map.getPanes());
+<<<<<<< Updated upstream
         return root;
+=======
+        Scene newScene = new Scene(root);
+        return newScene;
+    }
+    private Scene createMap(int mode){
+        this.gameMode = mode;
+        Pane root = new Pane();
+        root.setPrefSize(window_width, window_height);
+        map = new Map();
+        root.getChildren().add(map.getPanes());
+        Scene newScene = new Scene(root);
+        if(mode == 0) {
+            player = new Player(root, map);
+            Civilian civilian1 = new Civilian(root, map);
+        }
+        if(mode == 1){
+            Button gen = new Button();
+        }
+        registerInput(newScene);
+        return newScene;
+    }
+
+    private void registerInput(Scene currentScene){
+        if(gameMode == 0){
+            currentScene.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
+                @Override
+                public void handle(KeyEvent keyEvent) {
+                    player.registerInput(keyEvent);
+                }
+            });
+        }
+        else if(gameMode == 1){
+            currentScene.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    map.registerInput(mouseEvent);
+                }
+            });
+        }
+>>>>>>> Stashed changes
     }
 }
 
