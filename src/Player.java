@@ -18,60 +18,52 @@ public class Player {
     private Rectangle rect = new Rectangle(MapTile.tileSize - offset, MapTile.tileSize - offset);
     private Pane pane;
 
-    public Player(Scene currentScene, Pane pane, Map map){
+    public Player(Pane pane, Map map){
         this.map = map;
         this.pane = pane;
-        this.currentScene = currentScene;
         createPlayer();
     }
 
-    public Player(Scene currentScene, Pane pane, Map map, int x, int y){
+    public Player(Pane pane, Map map, int x, int y){
         this.x = x;
         this.y = y;
         this.map = map;
         this.pane = pane;
-        this.currentScene = currentScene;
         createPlayer();
     }
     public void createPlayer(){
         pane.getChildren().add(rect);
         rect.setFill(Color.LIGHTGRAY);
-        rect.setStroke(Color.LIGHTGRAY);
+        rect.setStroke(Color.WHITE);
         rect.setTranslateX(x * MapTile.tileSize + (offset+1) / 2);
         rect.setTranslateY(y * MapTile.tileSize + (offset+1) / 2);
-        movePlayer();
+        //movePlayer();
     }
 
-    public void movePlayer(){
-        currentScene.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
-            public void handle(KeyEvent ke) {
-                if (ke.getCode() == KeyCode.W) {
-                    if (y != 0) {
-                        y--;
-                    }
-                }
-                if (ke.getCode() == KeyCode.A) {
-                    if (x != 0) {
-                        x--;
-                    }
-                }
-                if (ke.getCode() == KeyCode.S) {
-                    if (y != map.getSize_y() - 1) {
-                        y++;
-                    }
-                }
-                if (ke.getCode() == KeyCode.D) {
-                    if (x != map.getSize_x()) {
-                        x++;
-                    }
-                }
-                System.out.println("Key Pressed: "+ ke.getCode());
-                System.out.println("Player is @: ["+x +", "+y +"]");
-                rect.setTranslateX(x * MapTile.tileSize + (offset+1) / 2);
-                rect.setTranslateY(y * MapTile.tileSize + (offset+1) / 2);
+    public void registerInput(KeyEvent ke) {
+        if (ke.getCode() == KeyCode.W) {
+            if (y != 0) {
+                y--;
             }
-        });
-
-
+        }
+        if (ke.getCode() == KeyCode.A) {
+            if (x != 0) {
+                x--;
+            }
+        }
+        if (ke.getCode() == KeyCode.S) {
+            if (y != map.getSize_y() - 1) {
+                y++;
+            }
+        }
+        if (ke.getCode() == KeyCode.D) {
+            if (x != map.getSize_x() - 1) {
+                x++;
+            }
+        }
+        System.out.println("Key Pressed: " + ke.getCode());
+        System.out.println("Player is @: [" + x + ", " + y + "]");
+        rect.setTranslateX(x * MapTile.tileSize + (offset + 1) / 2);
+        rect.setTranslateY(y * MapTile.tileSize + (offset + 1) / 2);
     }
 }

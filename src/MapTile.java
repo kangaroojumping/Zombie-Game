@@ -7,8 +7,11 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.util.logging.Handler;
 
 public class MapTile extends StackPane {
+    private Map map;
     private int x;
     private int y;
 
@@ -21,7 +24,8 @@ public class MapTile extends StackPane {
     private String tileName;
     public String getTileName(){return tileName;}
 
-    public MapTile(int x, int y){
+    public MapTile(Map map, int x, int y){
+        this.map = map;
         this.x = x;
         this.y = y;
         tileType = 0;
@@ -29,7 +33,8 @@ public class MapTile extends StackPane {
         createTile();
         //System.out.println("Tile " + x + ", " + y + " created.");
     }
-    public MapTile(int x, int y, int type){
+    public MapTile(Map map, int x, int y, int type){
+        this.map = map;
         this.x = x;
         this.y = y;
         tileType = type;
@@ -48,6 +53,7 @@ public class MapTile extends StackPane {
             rect.setFill(Color.WHITE);
 
         rect.setStroke(Color.BLACK);
+        //rect.addEventHandler(MouseEvent, new Handler());
         pane.getChildren().add(rect);
 
         pane.setTranslateX(x * tileSize);

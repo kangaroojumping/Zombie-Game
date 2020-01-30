@@ -1,4 +1,5 @@
 import javafx.scene.Group;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 
 public class Map {
@@ -20,16 +21,37 @@ public class Map {
         generateMap();
     }
 
+    private boolean generated = false;
+
     private void generateMap(){
+        if(generated)
+            resetMap();
+
         tiles = new MapTile[size_x][];
         for(int i = 0; i < size_x; i++){
             tiles[i] = new MapTile[size_y];
             for(int j = 0; j < size_y; j++){
-                tiles[i][j] = new MapTile(i, j);
+                tiles[i][j] = new MapTile(this, i, j);
                 tiles[i][j].getPane().setTranslateX(i * MapTile.tileSize);
                 tiles[i][j].getPane().setTranslateY(j * MapTile.tileSize);
                 panes.getChildren().add(tiles[i][j].getPane());
             }
         }
+        generated = true;
+    }
+
+    private void resetMap(){
+        tiles = new MapTile[size_x][];
+        for(int i = 0; i < size_x; i++)
+            tiles[i] = new MapTile[size_y];
+        panes.getChildren().clear();
+        generated = false;
+    }
+
+    public void registerInput(MouseEvent me){
+        System.out.println("Mouse click.");
+        int px = (int)me.getX() / MapTile.tileSize;
+        int py = (int)me.getY() / MapTile.tileSize;
+        System.out.println("[" + px + ", " + py + "]");
     }
 }
