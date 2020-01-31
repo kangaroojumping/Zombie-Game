@@ -17,6 +17,11 @@ public class Civilian {
     private Map map;
     private Rectangle rect = new Rectangle(MapTile.tileSize - offset, MapTile.tileSize - offset);
     private Pane pane;
+<<<<<<< Updated upstream
+=======
+    private Player player;
+    private int keyPressCount = 0;
+>>>>>>> Stashed changes
 
     public Civilian(Pane pane, Map map) {
         this.pane = pane;
@@ -42,6 +47,7 @@ public class Civilian {
     }
 
     public void registerInput(KeyEvent ke) {
+<<<<<<< Updated upstream
         if (ke.getCode() == KeyCode.W) {
             if (y != 0) {
                 y--;
@@ -67,4 +73,55 @@ public class Civilian {
         rect.setTranslateX(x * MapTile.tileSize + (offset + 1) / 2);
         rect.setTranslateY(y * MapTile.tileSize + (offset + 1) / 2);
     }
+=======
+        if (ke.getCode() == KeyCode.W || ke.getCode() == KeyCode.A || ke.getCode() == KeyCode.S || ke.getCode() == KeyCode.D) {
+            keyPressCount++;
+            System.out.println("Numbers of Keys Pressed: " + keyPressCount);
+        }
+        Random rand = new Random();
+        int randomNumber = rand.nextInt(4);
+        if (keyPressCount % 2 == 0) {
+            if (randomNumber == 0) {
+                if (y != 0) {
+                    y--;
+                }
+            }
+            if (randomNumber == 1) {
+                if (x != 0) {
+                    x--;
+                }
+            }
+            if (randomNumber == 2) {
+                if (y != map.getSize_y() - 1) {
+                    y++;
+                }
+            }
+            if (randomNumber == 3) {
+                if (x != map.getSize_x() - 1) {
+                    x++;
+                }
+            }
+        }
+        //System.out.println("Key Pressed: " + ke.getCode());
+        //System.out.println("Player is @: [" + x + ", " + y + "]");
+        rect.setTranslateX(x * MapTile.tileSize + (offset + 1) / 2);
+        rect.setTranslateY(y * MapTile.tileSize + (offset + 1) / 2);
+    }
+
+    public void removeCivilian() {
+        pane.getChildren().remove(rect);
+        rect.setFill(Color.LIGHTGRAY);
+        rect.setStroke(Color.WHITE);
+        rect.setTranslateX(x * MapTile.tileSize + (offset+1) / 2);
+        rect.setTranslateY(y * MapTile.tileSize + (offset+1) / 2);
+    }
+
+    public void transformCivilian() {
+        pane.getChildren().add(rect);
+        rect.setFill(Color.LIGHTGRAY);
+        rect.setStroke(Color.WHITE);
+        rect.setTranslateX(x * MapTile.tileSize + (offset+1) / 2);
+        rect.setTranslateY(y * MapTile.tileSize + (offset+1) / 2);
+    }
+>>>>>>> Stashed changes
 } // end class Civilian

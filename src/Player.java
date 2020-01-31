@@ -66,4 +66,12 @@ public class Player {
         rect.setTranslateX(x * MapTile.tileSize + (offset + 1) / 2);
         rect.setTranslateY(y * MapTile.tileSize + (offset + 1) / 2);
     }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
 }
