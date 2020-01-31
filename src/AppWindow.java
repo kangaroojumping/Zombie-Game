@@ -11,6 +11,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
+import java.util.*;
 
 public class AppWindow extends Application {
     public static void main(String[] args) {
@@ -48,6 +49,9 @@ public class AppWindow extends Application {
 
     private int gameMode = -1;
     private Player player;
+    private Civilian civilian1;
+    private Civilian civilian2;
+    private Civilian civilian3;
     private Map map;
 
     private Scene createMap(){
@@ -65,8 +69,12 @@ public class AppWindow extends Application {
         map = new Map();
         root.getChildren().add(map.getPanes());
         Scene newScene = new Scene(root);
+        Random rand = new Random();
         if(mode == 0)
             player = new Player(root, map);
+            civilian1 = new Civilian(root, map, rand.nextInt(MapTile.tileSize), rand.nextInt(MapTile.tileSize));
+            civilian2 = new Civilian(root, map, rand.nextInt(MapTile.tileSize), rand.nextInt(MapTile.tileSize));
+            civilian3 = new Civilian(root, map, rand.nextInt(MapTile.tileSize), rand.nextInt(MapTile.tileSize));
         if(mode == 1){
             Button gen = new Button();
         }
@@ -80,6 +88,9 @@ public class AppWindow extends Application {
                 @Override
                 public void handle(KeyEvent keyEvent) {
                     player.registerInput(keyEvent);
+                    civilian1.registerInput(keyEvent);
+                    civilian2.registerInput(keyEvent);
+                    civilian3.registerInput(keyEvent);
                 }
             });
         }

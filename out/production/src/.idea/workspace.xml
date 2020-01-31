@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4af78c84-80a3-47b9-992a-401f35b9c4e5" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,6 +34,18 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
   <component name="RunManager">
     <configuration name="AppWindow" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="AppWindow" />
@@ -48,18 +61,6 @@
       </method>
     </configuration>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -72,6 +73,17 @@
       <updated>1579797267449</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="92" key="#Project_Structure" timestamp="1579797452929">
@@ -90,26 +102,26 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="445" y="148" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1579797451754" />
-    <state width="1493" height="122" key="GridCell.Tab.0.bottom" timestamp="1580322550909">
+    <state width="1493" height="122" key="GridCell.Tab.0.bottom" timestamp="1580373432223">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="326" key="GridCell.Tab.0.bottom/0.0.1536.864/1920.0.1920.1080@0.0.1536.864" timestamp="1579817185500" />
-    <state width="1493" height="122" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1580322550909" />
-    <state width="1493" height="122" key="GridCell.Tab.0.center" timestamp="1580322550909">
+    <state width="1493" height="122" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1580373432223" />
+    <state width="1493" height="122" key="GridCell.Tab.0.center" timestamp="1580373432223">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="326" key="GridCell.Tab.0.center/0.0.1536.864/1920.0.1920.1080@0.0.1536.864" timestamp="1579817185500" />
-    <state width="1493" height="122" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1580322550909" />
-    <state width="1493" height="122" key="GridCell.Tab.0.left" timestamp="1580322550909">
+    <state width="1493" height="122" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1580373432223" />
+    <state width="1493" height="122" key="GridCell.Tab.0.left" timestamp="1580373432223">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="326" key="GridCell.Tab.0.left/0.0.1536.864/1920.0.1920.1080@0.0.1536.864" timestamp="1579817185500" />
-    <state width="1493" height="122" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1580322550909" />
-    <state width="1493" height="122" key="GridCell.Tab.0.right" timestamp="1580322550909">
+    <state width="1493" height="122" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1580373432223" />
+    <state width="1493" height="122" key="GridCell.Tab.0.right" timestamp="1580373432223">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="326" key="GridCell.Tab.0.right/0.0.1536.864/1920.0.1920.1080@0.0.1536.864" timestamp="1579817185500" />
-    <state width="1493" height="122" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1580322550909" />
+    <state width="1493" height="122" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1580373432223" />
     <state x="277" y="16" key="SettingsEditor" timestamp="1580149528462">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -122,9 +134,9 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="425" y="197" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1580325161690" />
-    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1580253408809">
+    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1580329184968">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1580253408809" />
+    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1580329184968" />
   </component>
 </project>
