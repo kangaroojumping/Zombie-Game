@@ -37,6 +37,14 @@ public class Civilian {
         createCivilian();
     }
 
+    public void transformCivilian() {
+        pane.getChildren().add(rect);
+        rect.setFill(Color.LIGHTGRAY);
+        rect.setStroke(Color.WHITE);
+        rect.setTranslateX(x * MapTile.tileSize + (offset+1) / 2);
+        rect.setTranslateY(y * MapTile.tileSize + (offset+1) / 2);
+    }
+
     public void createCivilian() {
         pane.getChildren().add(rect);
         rect.setFill(Color.BLUE);
@@ -122,6 +130,17 @@ public class Civilian {
         rect.setStroke(Color.WHITE);
         rect.setTranslateX(x * MapTile.tileSize + (offset+1) / 2);
         rect.setTranslateY(y * MapTile.tileSize + (offset+1) / 2);
+    }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 >>>>>>> Stashed changes
 } // end class Civilian

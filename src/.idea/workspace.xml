@@ -92,11 +92,17 @@
         <entry key="MAIN">
           <value>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             <State>
               <option name="COLUMN_ORDER" />
             </State>
 =======
             <State />
+>>>>>>> Stashed changes
+=======
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
 >>>>>>> Stashed changes
           </value>
         </entry>

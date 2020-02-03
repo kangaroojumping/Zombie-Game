@@ -73,10 +73,18 @@ public class AppWindow extends Application {
         if(mode == 0) {
             player = new Player(root, map);
             civilian1 = new Civilian(root, map, rand.nextInt(MapTile.tileSize), rand.nextInt(MapTile.tileSize));
+<<<<<<< Updated upstream
             civilian2 = new Civilian(root, map, rand.nextInt(MapTile.tileSize), rand.nextInt(MapTile.tileSize));
             civilian3 = new Civilian(root, map, rand.nextInt(MapTile.tileSize), rand.nextInt(MapTile.tileSize));
 >>>>>>> Stashed changes
         }
+=======
+            //civilian2 = new Civilian(root, map, rand.nextInt(MapTile.tileSize), rand.nextInt(MapTile.tileSize));
+            //civilian3 = new Civilian(root, map, rand.nextInt(MapTile.tileSize), rand.nextInt(MapTile.tileSize));
+            if (player.getX() == civilian1.getX() && player.getY() == civilian1.getY()) {
+                civilian1.transformCivilian();
+            }
+>>>>>>> Stashed changes
         if(mode == 1){
             Button gen = new Button();
         }
@@ -91,8 +99,8 @@ public class AppWindow extends Application {
                 public void handle(KeyEvent keyEvent) {
                     player.registerInput(keyEvent);
                     civilian1.registerInput(keyEvent);
-                    civilian2.registerInput(keyEvent);
-                    civilian3.registerInput(keyEvent);
+                    //civilian2.registerInput(keyEvent);
+                    //civilian3.registerInput(keyEvent);
                 }
             });
         }
