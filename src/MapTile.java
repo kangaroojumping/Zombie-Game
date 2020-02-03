@@ -18,9 +18,19 @@ public class MapTile extends StackPane {
     public static int tileSize = 20;
     private Rectangle rect = new Rectangle(tileSize - 1, tileSize - 1);
     private StackPane pane = new StackPane();
+    public StackPane getPane(){
+        return pane;
+    }
 
+    public static int tileAmount = 2;
     private int tileType;
     public int getTileType() {return tileType;}
+    public static String findTileName(int m) {
+        if (m > 0 || m < tileAmount) {
+            if (m == 1) return "Wall";
+        }
+            return "Ground";
+    }
     private String tileName;
     public String getTileName(){return tileName;}
 
@@ -28,8 +38,7 @@ public class MapTile extends StackPane {
         this.map = map;
         this.x = x;
         this.y = y;
-        tileType = 0;
-        tileName = "ground";
+        setTile(0);
         createTile();
         //System.out.println("Tile " + x + ", " + y + " created.");
     }
@@ -37,11 +46,7 @@ public class MapTile extends StackPane {
         this.map = map;
         this.x = x;
         this.y = y;
-        tileType = type;
-        if(tileType == 0)
-            tileName = "ground";
-        else if(tileType == 1)
-            tileName = "wall";
+        setTile(type);
         createTile();
         //System.out.println("Tile " + x + ", " + y + " created.");
     }
@@ -67,8 +72,18 @@ public class MapTile extends StackPane {
         pane.getChildren().add(text);
          */
     }
-
-    public StackPane getPane(){
-        return pane;
+    public void setTile(int m){
+        if(m < tileAmount){
+            tileType = m;
+            tileName = findTileName(m);
+            Color fillColor = Color.WHITE;
+            if(m == 1)
+                fillColor = Color.BLACK;
+            rect.setFill(fillColor);
+            rect.setStroke(Color.BLACK);
+        }
+        else if(m == tileAmount){
+            setTile(0);
+        }
     }
 }
