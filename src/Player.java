@@ -11,8 +11,10 @@ import javafx.scene.shape.Rectangle;
 import java.util.*;
 
 public class Player {
-    private Scene currentScene;
     private int x, y = 0;
+    public int getX(){return x;}
+    public int getY(){return y;}
+
     private int offset = 5;
     private Map map;
     private Rectangle rect = new Rectangle(MapTile.tileSize - offset, MapTile.tileSize - offset);
@@ -31,6 +33,7 @@ public class Player {
         this.pane = pane;
         createPlayer();
     }
+
     public void createPlayer(){
         pane.getChildren().add(rect);
         rect.setFill(Color.LIGHTGRAY);
@@ -40,38 +43,46 @@ public class Player {
         //movePlayer();
     }
 
-    public void registerInput(KeyEvent ke) {
-        if (ke.getCode() == KeyCode.W) {
-            if (y != 0) {
-                y--;
-            }
-        }
-        if (ke.getCode() == KeyCode.A) {
-            if (x != 0) {
-                x--;
-            }
-        }
-        if (ke.getCode() == KeyCode.S) {
-            if (y != map.getSize_y() - 1) {
-                y++;
-            }
-        }
-        if (ke.getCode() == KeyCode.D) {
-            if (x != map.getSize_x() - 1) {
-                x++;
-            }
-        }
-        System.out.println("Key Pressed: " + ke.getCode());
-        System.out.println("Player is @: [" + x + ", " + y + "]");
+    public void setPosition(int x, int y){
+        this.x = x;
+        this.y = y;
         rect.setTranslateX(x * MapTile.tileSize + (offset + 1) / 2);
         rect.setTranslateY(y * MapTile.tileSize + (offset + 1) / 2);
     }
 
-    public int getX() {
-        return x;
-    }
+    public void registerInput(KeyEvent ke) {
+        int px = x;
+        int py = y;
 
-    public int getY() {
-        return y;
+        if (ke.getCode() == KeyCode.W) {
+            if (py != 0) {
+                if(map.tiles[px][py - 1].getTileType() == 0)
+                py--;
+            }
+        }
+        if (ke.getCode() == KeyCode.A) {
+            if (px != 0) {
+                if(map.tiles[px - 1][py].getTileType() == 0)
+                px--;
+            }
+        }
+        if (ke.getCode() == KeyCode.S) {
+            if (py != map.getSize_y() - 1) {
+                if(map.tiles[px][py + 1].getTileType() == 0)
+                py++;
+            }
+        }
+        if (ke.getCode() == KeyCode.D) {
+            if (px != map.getSize_x() - 1) {
+                if(map.tiles[px + 1][py].getTileType() == 0)
+                px++;
+            }
+        }
+        //System.out.println("Key Pressed: " + ke.getCode());
+        if(x != px || y != py){
+            setPosition(px, py);
+            //String coor = "[" + x + ", " + y + "]";
+            //System.out.println("Player is @ " + coor);
+        }
     }
 }

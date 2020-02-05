@@ -11,17 +11,14 @@ import javafx.scene.shape.Rectangle;
 import java.util.*;
 public class Civilian {
     private Scene currentScene;
-    private int x = 3;
-    private int y = 3;
+    private int x = 0;
+    private int y = 0;
     private int offset = 5;
     private Map map;
     private Rectangle rect = new Rectangle(MapTile.tileSize - offset, MapTile.tileSize - offset);
     private Pane pane;
-<<<<<<< Updated upstream
-=======
     private Player player;
     private int keyPressCount = 0;
->>>>>>> Stashed changes
 
     public Civilian(Pane pane, Map map) {
         this.pane = pane;
@@ -37,110 +34,82 @@ public class Civilian {
         createCivilian();
     }
 
-    public void transformCivilian() {
-        pane.getChildren().add(rect);
-        rect.setFill(Color.LIGHTGRAY);
-        rect.setStroke(Color.WHITE);
-        rect.setTranslateX(x * MapTile.tileSize + (offset+1) / 2);
-        rect.setTranslateY(y * MapTile.tileSize + (offset+1) / 2);
-    }
-
     public void createCivilian() {
         pane.getChildren().add(rect);
         rect.setFill(Color.BLUE);
         rect.setStroke(Color.WHITE);
         rect.setTranslateX(x * MapTile.tileSize + (offset+1) / 2);
         rect.setTranslateY(y * MapTile.tileSize + (offset+1) / 2);
-        //moveCivilian();
+    }
+
+    public void setPosition(int x, int y) {
+        this.x = x;
+        this.y = y;
+        rect.setTranslateX(x * MapTile.tileSize + (offset + 1) / 2);
+        rect.setTranslateY(y * MapTile.tileSize + (offset + 1) / 2);
     }
 
     public void registerInput(KeyEvent ke) {
-<<<<<<< Updated upstream
-        if (ke.getCode() == KeyCode.W) {
-            if (y != 0) {
-                y--;
+        if(player == null) {
+            if (map.getHasPlayer()) {
+                player = map.getPlayer();
             }
         }
-        if (ke.getCode() == KeyCode.A) {
-            if (x != 0) {
-                x--;
-            }
-        }
-        if (ke.getCode() == KeyCode.S) {
-            if (y != map.getSize_y() - 1) {
-                y++;
-            }
-        }
-        if (ke.getCode() == KeyCode.D) {
-            if (x != map.getSize_x() - 1) {
-                x++;
-            }
-        }
-        System.out.println("Key Pressed: " + ke.getCode());
-        System.out.println("Player is @: [" + x + ", " + y + "]");
-        rect.setTranslateX(x * MapTile.tileSize + (offset + 1) / 2);
-        rect.setTranslateY(y * MapTile.tileSize + (offset + 1) / 2);
-    }
-=======
+
+        int px = x;
+        int py = y;
         if (ke.getCode() == KeyCode.W || ke.getCode() == KeyCode.A || ke.getCode() == KeyCode.S || ke.getCode() == KeyCode.D) {
             keyPressCount++;
             System.out.println("Numbers of Keys Pressed: " + keyPressCount);
+            Random rand = new Random();
+            int randomNumber = rand.nextInt(4);
+            if (keyPressCount % 2 == 0) {
+                if (randomNumber == 0) {
+                    if (py != 0) {
+                        if (player.getX() != px && player.getY() != py) {
+                            if (map.tiles[px][py - 1].getTileType() == 0) {
+                                py--;
+                            }
+                        }
+                    }
+                }
+                if (randomNumber == 1) {
+                    if (px != 0) {
+                        if (player.getX() != px && player.getY() != py) {
+                            if (map.tiles[px - 1][py].getTileType() == 0) {
+                                px--;
+                            }
+                        }
+                    }
+                }
+                if (randomNumber == 2) {
+                    if (py != map.getSize_y() - 1) {
+                        if (player.getX() != px && player.getY() != py) {
+                            if (map.tiles[px][py + 1].getTileType() == 0) {
+                                py++;
+                            }
+                        }
+                    }
+                }
+                if (randomNumber == 3) {
+                    if (px != map.getSize_x() - 1) {
+                        if (player.getX() != px && player.getY() != py) {
+                            if (map.tiles[px + 1][py].getTileType() == 0) {
+                                px++;
+                            }
+                        }
+                    }
+                }
+                //map.mapPlayer();
+                if(x != px || y != py) {
+                    //if (player.getX() != px && player.getY() != py) {
+                        setPosition(px, py);
+                        //String coor = "[" + x + ", " + y + "]";
+                        //System.out.println("Player is @ " + coor);
+                    //}
+                }
+                //System.out.println(player.getX() + "," + player.getY());
+            }
         }
-        Random rand = new Random();
-        int randomNumber = rand.nextInt(4);
-        if (keyPressCount % 2 == 0) {
-            if (randomNumber == 0) {
-                if (y != 0) {
-                    y--;
-                }
-            }
-            if (randomNumber == 1) {
-                if (x != 0) {
-                    x--;
-                }
-            }
-            if (randomNumber == 2) {
-                if (y != map.getSize_y() - 1) {
-                    y++;
-                }
-            }
-            if (randomNumber == 3) {
-                if (x != map.getSize_x() - 1) {
-                    x++;
-                }
-            }
-        }
-        //System.out.println("Key Pressed: " + ke.getCode());
-        //System.out.println("Player is @: [" + x + ", " + y + "]");
-        rect.setTranslateX(x * MapTile.tileSize + (offset + 1) / 2);
-        rect.setTranslateY(y * MapTile.tileSize + (offset + 1) / 2);
     }
-
-    public void removeCivilian() {
-        pane.getChildren().remove(rect);
-        rect.setFill(Color.LIGHTGRAY);
-        rect.setStroke(Color.WHITE);
-        rect.setTranslateX(x * MapTile.tileSize + (offset+1) / 2);
-        rect.setTranslateY(y * MapTile.tileSize + (offset+1) / 2);
-    }
-
-    public void transformCivilian() {
-        pane.getChildren().add(rect);
-        rect.setFill(Color.LIGHTGRAY);
-        rect.setStroke(Color.WHITE);
-        rect.setTranslateX(x * MapTile.tileSize + (offset+1) / 2);
-        rect.setTranslateY(y * MapTile.tileSize + (offset+1) / 2);
-    }
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
->>>>>>> Stashed changes
 } // end class Civilian
