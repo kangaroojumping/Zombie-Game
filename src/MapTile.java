@@ -52,15 +52,9 @@ public class MapTile extends StackPane {
     }
 
     private void createTile(){
-        if(tileType == 1)
-            rect.setFill(Color.LIGHTGRAY);
-        else
-            rect.setFill(Color.WHITE);
-
         rect.setStroke(Color.BLACK);
-        //rect.addEventHandler(MouseEvent, new Handler());
-        pane.getChildren().add(rect);
 
+        pane.getChildren().add(rect);
         pane.setTranslateX(x * tileSize);
         pane.setTranslateY(y * tileSize);
 
@@ -82,7 +76,7 @@ public class MapTile extends StackPane {
             rect.setFill(fillColor);
             rect.setStroke(Color.BLACK);
         }
-        else if(m == tileAmount){
+        else if(m >= tileAmount){
             setTile(0);
         }
     }

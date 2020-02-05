@@ -21,6 +21,8 @@ public class Map {
         mapPlayer = player;
         hasPlayer = player != null;
     }
+    public boolean getHasPlayer(){return hasPlayer;}
+    public Player getPlayer(){return mapPlayer;}
 
     public Map(Level level, int x, int y){
         this.level = level;
@@ -114,15 +116,25 @@ public class Map {
     }
 
     public void loadLevel(int[][] t){
-        resetMap();
+        if(generated)
+            resetMap();
+
         size_x = t.length;
         size_y = t[0].length; //Should always be square
+        //System.out.println(size_x + ", " + size_y);
+        tiles = new MapTile[size_x][];
         for(int i = 0; i < size_x; i++){
+            tiles[i] = new MapTile[size_y];
+            //System.out.println();
             for(int j = 0; j < size_y; j++){
                 tiles[i][j] = new MapTile(this, i, j, t[i][j]);
+                //System.out.print(t[i][j] + " ");
                 setPosition(tiles[i][j], i, j);
+                panes.getChildren().add(tiles[i][j].getPane());
             }
         }
+        pane.getChildren().add(panes);
+        generated = true;
     }
 
 }
