@@ -1,0 +1,27 @@
+For convenience, week 3 is week 1.
+Similarly, week 12 is now week 9.
+
+Week 1 Goal: 
+-Basic Engine
+-Basic GUI
+-Basic classes for needed objects
+--Player
+--Zombie
+--Items
+--Map
+
+Week 2 Goal:
+-Basic Functionality for game elements
+--player controls
+--zombie behavior
+-Map editing
+-Rudimentary graphics for basic things
+
+Week 3 Goal:
+-Something resembling gameplay?
+-Functional items
+-Map saves and loads
+-Start designing maps
+-More/Nicer looking graphics
+
+Week 4 Goal:
