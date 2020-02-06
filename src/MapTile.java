@@ -1,5 +1,7 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -8,6 +10,8 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.logging.Handler;
 
 public class MapTile extends StackPane {
@@ -80,4 +84,5 @@ public class MapTile extends StackPane {
             setTile(0);
         }
     }
+
 }

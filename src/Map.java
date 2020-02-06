@@ -137,5 +137,4 @@ public class Map {
         pane.getChildren().add(panes);
         generated = true;
     }
-
 }

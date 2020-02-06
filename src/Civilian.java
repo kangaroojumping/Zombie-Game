@@ -46,7 +46,6 @@ public class Civilian {
     public void registerInput(KeyEvent ke) {
         if (ke.getCode() == KeyCode.W || ke.getCode() == KeyCode.A || ke.getCode() == KeyCode.S || ke.getCode() == KeyCode.D) {
             keyPressCount++;
-            System.out.println("Numbers of Keys Pressed: " + keyPressCount);
             Random rand = new Random();
             int randomNumber = rand.nextInt(4);
             if (keyPressCount % 2 == 0) {
@@ -71,8 +70,6 @@ public class Civilian {
                     }
                 }
             }
-            //System.out.println("Key Pressed: " + ke.getCode());
-            //System.out.println("Player is @: [" + x + ", " + y + "]");
             rect.setTranslateX(x * MapTile.tileSize + (offset + 1) / 2);
             rect.setTranslateY(y * MapTile.tileSize + (offset + 1) / 2);
         }

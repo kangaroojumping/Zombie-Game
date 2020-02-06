@@ -18,7 +18,8 @@ public class Level {
     private Scene currentScene;
     private int gameMode = -1;
     private Player player;
-    private Enemy enemy;
+    private Enemy enemy, enemy2;
+
     private Civilian civilian;
     private Map map;
     private Pane root;
@@ -60,11 +61,8 @@ public class Level {
             player = new Player(root, map);
 
             civilian = new Civilian(root, map);
-            try {
-                enemy = new Enemy(root, map);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+            enemy = new Enemy(root, map);
+            enemy2 = new Enemy(root, map, 15, 15);
 
             map.setPlayer(player);
         }
@@ -88,6 +86,7 @@ public class Level {
                     player.registerInput(keyEvent);
                     civilian.registerInput(keyEvent);
                     enemy.move(keyEvent);
+                    enemy2.move(keyEvent);
                 }
             });
         }

@@ -35,17 +35,24 @@ public class Enemy {
     private double south = 0;
     private double west = 270;
     
-    Image image = new Image(new FileInputStream(("C:\\Users\\devan\\OneDrive\\Documents\\GitHub\\Zombie-Game\\Zombie-Game\\src\\survivor-idle_shotgun_0.png")));
+    Image image;
+    {
+        try {
+            image = new Image(new FileInputStream(("C:\\Users\\devan\\OneDrive\\Documents\\GitHub\\Zombie-Game\\src\\survivor-idle_shotgun_0.png")));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
     ImageView imageView = new ImageView(image);
 
 
-    public Enemy(Pane pane, Map map) throws FileNotFoundException {
+    public Enemy(Pane pane, Map map) {
         this.map = map;
         this.pane = pane;
         createEnemy();
     }
 
-    public Enemy(Pane pane, Map map, int x, int y) throws FileNotFoundException {
+    public Enemy(Pane pane, Map map, int x, int y){
         this.x = x;
         this.y = y;
         this.map = map;
@@ -119,18 +126,17 @@ public class Enemy {
             if (player.getX() == x && player.getY() == y) {
                 pane.getChildren().remove(imageView);
             }
-            System.out.println(count);
             setPosition(px, py);
         }
     }
 
     public void shoot(){
-        Line bullet = new Line();
-        bullet.setStartX(x * 20 + 10);
-        bullet.setStartY(y * 20 + 10);
-        bullet.setEndX(player.getX() * 20 + 10);
-        bullet.setEndY(player.getY() * 20 + 10);
-        pane.getChildren().add(bullet);
+//        Line bullet = new Line();
+//        bullet.setStartX(x * 20 + 10);
+//        bullet.setStartY(y * 20 + 10);
+//        bullet.setEndX(player.getX() * 20 + 10);
+//        bullet.setEndY(player.getY() * 20 + 10);
+//        pane.getChildren().add(bullet);
 
     }
     public void remove(){
