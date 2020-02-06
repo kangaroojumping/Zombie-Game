@@ -66,47 +66,47 @@ public class Civilian {
             if (keyPressCount % 2 == 0) {
                 if (randomNumber == 0) {
                     if (py != 0) {
-                        if (player.getX() != px && player.getY() != py) {
+                        //if (player.getX() != px && player.getY() != py) {
                             if (map.tiles[px][py - 1].getTileType() == 0) {
                                 py--;
                             }
-                        }
+                        //}
                     }
                 }
                 if (randomNumber == 1) {
                     if (px != 0) {
-                        if (player.getX() != px && player.getY() != py) {
+                        //if (player.getX() != px && player.getY() != py) {
                             if (map.tiles[px - 1][py].getTileType() == 0) {
                                 px--;
                             }
-                        }
+                        //}
                     }
                 }
                 if (randomNumber == 2) {
                     if (py != map.getSize_y() - 1) {
-                        if (player.getX() != px && player.getY() != py) {
+                        //if (player.getX() != px && player.getY() != py) {
                             if (map.tiles[px][py + 1].getTileType() == 0) {
                                 py++;
                             }
-                        }
+                        //}
                     }
                 }
                 if (randomNumber == 3) {
                     if (px != map.getSize_x() - 1) {
-                        if (player.getX() != px && player.getY() != py) {
+                        //if (player.getX() != px && player.getY() != py) {
                             if (map.tiles[px + 1][py].getTileType() == 0) {
                                 px++;
                             }
-                        }
+                        //}
                     }
                 }
                 //map.mapPlayer();
                 if(x != px || y != py) {
-                    //if (player.getX() != px && player.getY() != py) {
+                    if (player.getX() != px && player.getY() != py) {
                         setPosition(px, py);
                         //String coor = "[" + x + ", " + y + "]";
                         //System.out.println("Player is @ " + coor);
-                    //}
+                    }
                 }
                 //System.out.println(player.getX() + "," + player.getY());
             }
