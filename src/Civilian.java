@@ -7,7 +7,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import java.util.*;
 public class Civilian {
@@ -51,6 +50,11 @@ public class Civilian {
     }
 
     public void registerInput(KeyEvent ke) {
+        if(player == null) {
+            if (map.getHasPlayer()) {
+                player = map.getPlayer();
+            }
+        }
 
         int px = x;
         int py = y;
@@ -76,9 +80,9 @@ public class Civilian {
                 }
                 if (randomNumber == 2) {
                     if (py != map.getSize_y() - 1) {
-                        if (map.tiles[px][py + 1].getTileType() == 0) {
-                            py++;
-                        }
+                         if (map.tiles[px][py + 1].getTileType() == 0) {
+                             py++;
+                         }
                     }
                 }
                 if (randomNumber == 3) {
@@ -88,6 +92,7 @@ public class Civilian {
                         }
                     }
                 }
+                //map.mapPlayer();
                 if(x != px || y != py) {
                     if (player.getX() != px && player.getY() != py) {
                         setPosition(px, py);
