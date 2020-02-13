@@ -30,20 +30,8 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="AppWindow" type="Application" factoryName="Application" nameIsGenerated="true">
@@ -87,6 +75,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="361" y="92" key="#Notifications" timestamp="1580838073997">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="361" y="92" key="#Notifications/0.0.1536.864@0.0.1536.864" timestamp="1580838073997" />
     <state x="361" y="92" key="#Project_Structure" timestamp="1579797452929">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -103,75 +95,46 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="445" y="148" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1579797451754" />
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    <state width="1493" height="122" key="GridCell.Tab.0.bottom" timestamp="1580146432124">
+    <state width="1493" height="122" key="GridCell.Tab.0.bottom" timestamp="1580927900002">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="326" key="GridCell.Tab.0.bottom/0.0.1536.864/1920.0.1920.1080@0.0.1536.864" timestamp="1579817185500" />
-    <state width="1493" height="122" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1580146432124" />
-    <state width="1493" height="122" key="GridCell.Tab.0.center" timestamp="1580146432123">
+    <state width="1493" height="122" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1580927900002" />
+    <state width="1493" height="122" key="GridCell.Tab.0.center" timestamp="1580927899998">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="326" key="GridCell.Tab.0.center/0.0.1536.864/1920.0.1920.1080@0.0.1536.864" timestamp="1579817185500" />
-    <state width="1493" height="122" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1580146432123" />
-    <state width="1493" height="122" key="GridCell.Tab.0.left" timestamp="1580146432123">
+    <state width="1493" height="122" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1580927899998" />
+    <state width="1493" height="122" key="GridCell.Tab.0.left" timestamp="1580927899998">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="326" key="GridCell.Tab.0.left/0.0.1536.864/1920.0.1920.1080@0.0.1536.864" timestamp="1579817185500" />
-    <state width="1493" height="122" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1580146432123" />
-    <state width="1493" height="122" key="GridCell.Tab.0.right" timestamp="1580146432123">
+    <state width="1493" height="122" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1580927899998" />
+    <state width="1493" height="122" key="GridCell.Tab.0.right" timestamp="1580927899998">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="326" key="GridCell.Tab.0.right/0.0.1536.864/1920.0.1920.1080@0.0.1536.864" timestamp="1579817185500" />
-    <state width="1493" height="122" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1580146432123" />
-    <state x="277" y="76" key="SettingsEditor" timestamp="1579797836695">
-=======
-=======
->>>>>>> Stashed changes
-    <state width="1493" height="122" key="GridCell.Tab.0.bottom" timestamp="1580373432223">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="326" key="GridCell.Tab.0.bottom/0.0.1536.864/1920.0.1920.1080@0.0.1536.864" timestamp="1579817185500" />
-    <state width="1493" height="122" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1580373432223" />
-    <state width="1493" height="122" key="GridCell.Tab.0.center" timestamp="1580373432223">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="326" key="GridCell.Tab.0.center/0.0.1536.864/1920.0.1920.1080@0.0.1536.864" timestamp="1579817185500" />
-    <state width="1493" height="122" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1580373432223" />
-    <state width="1493" height="122" key="GridCell.Tab.0.left" timestamp="1580373432223">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="326" key="GridCell.Tab.0.left/0.0.1536.864/1920.0.1920.1080@0.0.1536.864" timestamp="1579817185500" />
-    <state width="1493" height="122" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1580373432223" />
-    <state width="1493" height="122" key="GridCell.Tab.0.right" timestamp="1580373432223">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="326" key="GridCell.Tab.0.right/0.0.1536.864/1920.0.1920.1080@0.0.1536.864" timestamp="1579817185500" />
-    <state width="1493" height="122" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1580373432223" />
+    <state width="1493" height="122" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1580927899998" />
     <state x="277" y="16" key="SettingsEditor" timestamp="1580149528462">
->>>>>>> Stashed changes
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="277" y="76" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1579797836695" />
-    <state x="465" y="258" key="com.intellij.ide.util.TipDialog" timestamp="1580146688630">
+    <state x="277" y="16" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1580149528462" />
+    <state x="490" y="173" width="540" height="524" key="StructurePopup" timestamp="1580837213492">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-<<<<<<< Updated upstream
-    <state x="465" y="258" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1580146688630" />
-=======
-    <state x="465" y="258" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1580322627072" />
+    <state x="490" y="173" width="540" height="524" key="StructurePopup/0.0.1536.864@0.0.1536.864" timestamp="1580837213492" />
+    <state x="414" y="217" key="com.intellij.ide.util.TipDialog" timestamp="1581618682886">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="414" y="217" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1581618682886" />
+    <state x="465" y="258" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1580756009530" />
     <state x="425" y="197" key="run.anything.popup" timestamp="1580325161690">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="425" y="197" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1580325161690" />
-    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1580329184968">
+    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1580860884511">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1580329184968" />
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1580860884511" />
   </component>
 </project>

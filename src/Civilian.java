@@ -2,20 +2,22 @@ import javafx.event.ActionEvent;
 import javafx.scene.*;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import java.util.*;
 public class Civilian {
     private Scene currentScene;
     private int x = 0;
     private int y = 0;
-    private int offset = 5;
+    private int offset = 3;
     private Map map;
-    private Rectangle rect = new Rectangle(MapTile.tileSize - offset, MapTile.tileSize - offset);
+    private Rectangle rect = new Rectangle(MapTile.tileSize + 1, MapTile.tileSize);
     private Pane pane;
     private Player player;
     private int keyPressCount = 0;
@@ -36,10 +38,10 @@ public class Civilian {
 
     public void createCivilian() {
         pane.getChildren().add(rect);
-        rect.setFill(Color.BLUE);
-        rect.setStroke(Color.WHITE);
-        rect.setTranslateX(x * MapTile.tileSize + (offset+1) / 2);
-        rect.setTranslateY(y * MapTile.tileSize + (offset+1) / 2);
+        Image sprite = new Image("png/Walk (1).png");
+        rect.setFill(new ImagePattern(sprite));
+        rect.setTranslateX(x * MapTile.tileSize + offset);
+        rect.setTranslateY(y * MapTile.tileSize + offset);
     }
 
     public void setPosition(int x, int y) {
