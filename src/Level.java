@@ -18,6 +18,7 @@ public class Level {
     private Scene currentScene;
     private int gameMode = -1;
     private Player player;
+    public void setPlayer(Player p){player = p;}
     private Map map;
     private Pane root;
 
@@ -55,7 +56,7 @@ public class Level {
         window_height = map.getSize_y() * MapTile.tileSize;
         root.getChildren().add(map.getPane());
         if(mode == 0){
-            player = new Player(root, map);
+            player = new Player(map);
             map.setPlayer(player);
         }
         if(mode == 1) {
@@ -65,13 +66,13 @@ public class Level {
         }
         root.setPrefSize(window_width, window_height);
         Scene newScene = new Scene(root, window_width, window_height);
-        registerInput(newScene);
+        registerInput(newScene, gameMode);
         currentScene = newScene;
         return newScene;
     }
 
-    private void registerInput(Scene scene){
-        if(gameMode == 0){
+    private void registerInput(Scene scene, int m){
+        if(m == 0){
             scene.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
                 @Override
                 public void handle(KeyEvent keyEvent) {
@@ -79,7 +80,7 @@ public class Level {
                 }
             });
         }
-        else if(gameMode == 1){
+        else if(m == 1){
             scene.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
@@ -90,20 +91,23 @@ public class Level {
     }
 
     public void setInput(Player player){
-        currentScene.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent keyEvent) {
-                player.registerInput(keyEvent);
-            }
-        });
+        if(this.player == null){
+            setPlayer(player);
+            registerInput(currentScene, 0);
+        }else
+            setPlayer(player);
+
     }
 
     private void shiftElements(){
+        tileBtn.setTranslateX(window_width - buttonWidth);
+        tileBtn.setTranslateY(buttonHeight * 4);
+
         levelText.setTranslateX(window_width - buttonWidth + textWidth / 2 - 20);
         levelText.setTranslateY(tileBtn.getTranslateY() + buttonHeight * 2);
         
         levelField.setTranslateX(window_width - buttonWidth + textWidth);
-        levelField.setTranslateY(levelText.getTranslateY() - buttonHeight/2);
+        levelField.setTranslateY(tileBtn.getTranslateY() + buttonHeight);
 
         for (int i = 0; i < 2; i++) {
             btns[i].setTranslateX(window_width - buttonWidth);
@@ -118,9 +122,6 @@ public class Level {
             slBtns[i].setTranslateX(window_width - buttonWidth);
             slBtns[i].setTranslateY(levelText.getTranslateY() + (buttonHeight * (i + 1)));
         }
-
-        tileBtn.setTranslateX(window_width - buttonWidth);
-        tileBtn.setTranslateY(buttonHeight * 4);
     }
 
     public void saveLevel(String name) {saveLevel(map, name);}

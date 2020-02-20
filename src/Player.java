@@ -18,29 +18,30 @@ public class Player {
     private int offset = 5;
     private Map map;
     private Rectangle rect = new Rectangle(MapTile.tileSize - offset, MapTile.tileSize - offset);
-    private Pane pane;
+    private Pane pane = new Pane();
 
-    public Player(Pane pane, Map map){
+    public boolean isActive = true;
+
+    public Player(Map map){
         this.map = map;
-        this.pane = pane;
+        map.getPane().getChildren().add(pane);
         createPlayer();
     }
 
-    public Player(Pane pane, Map map, int x, int y){
+    public Player(Map map, int x, int y){
         this.x = x;
         this.y = y;
         this.map = map;
-        this.pane = pane;
+        map.getPane().getChildren().add(pane);
         createPlayer();
     }
 
     public void createPlayer(){
-        pane.getChildren().add(rect);
+        setPosition(x, y);
         rect.setFill(Color.LIGHTGRAY);
         rect.setStroke(Color.WHITE);
-        rect.setTranslateX(x * MapTile.tileSize + (offset+1) / 2);
-        rect.setTranslateY(y * MapTile.tileSize + (offset+1) / 2);
-        //movePlayer();
+        pane.getChildren().add(rect);
+        pane.toFront();
     }
 
     public void setPosition(int x, int y){
@@ -48,41 +49,45 @@ public class Player {
         this.y = y;
         rect.setTranslateX(x * MapTile.tileSize + (offset + 1) / 2);
         rect.setTranslateY(y * MapTile.tileSize + (offset + 1) / 2);
+        System.out.println("Player is @ " + MapTile.coor(x, y));
+        /*
+        if(!map.getPane().getChildren().contains((pane))) {
+            System.out.println("Making player visible...");
+            map.getPane().getChildren().add(pane);
+            pane.toFront();
+        }
+        */
+
+    }
+
+    public void displayPlayer(boolean b){
+        if(b)
+            pane.toFront();
+        else
+            pane.getChildren().clear();
     }
 
     public void registerInput(KeyEvent ke) {
-        int px = x;
-        int py = y;
+        if(isActive){
+            int px = x;
+            int py = y;
 
-        if (ke.getCode() == KeyCode.W) {
-            if (py != 0) {
-                if(map.tiles[px][py - 1].getTileType() == 0)
+            if (ke.getCode() == KeyCode.W)
                 py--;
-            }
-        }
-        if (ke.getCode() == KeyCode.A) {
-            if (px != 0) {
-                if(map.tiles[px - 1][py].getTileType() == 0)
+            if (ke.getCode() == KeyCode.A)
                 px--;
-            }
-        }
-        if (ke.getCode() == KeyCode.S) {
-            if (py != map.getSize_y() - 1) {
-                if(map.tiles[px][py + 1].getTileType() == 0)
+            if (ke.getCode() == KeyCode.S)
                 py++;
-            }
-        }
-        if (ke.getCode() == KeyCode.D) {
-            if (px != map.getSize_x() - 1) {
-                if(map.tiles[px + 1][py].getTileType() == 0)
+            if (ke.getCode() == KeyCode.D)
                 px++;
+
+            if (((px != map.getSize_x() - 1 && px != 0) &&
+                    (py != map.getSize_y() - 1 && py != 0) )&&
+                    (map.tiles[px][py].getTileType() == 0)) {
+
+                setPosition(px, py);
             }
         }
-        //System.out.println("Key Pressed: " + ke.getCode());
-        if(x != px || y != py){
-            setPosition(px, py);
-            //String coor = "[" + x + ", " + y + "]";
-            //System.out.println("Player is @ " + coor);
-        }
+
     }
 }

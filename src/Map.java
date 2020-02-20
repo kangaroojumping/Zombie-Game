@@ -5,23 +5,31 @@ import javafx.scene.layout.StackPane;
 
 public class Map {
     private Level level;
+    public Level getLevel(){return level;}
+
     private int size_x = 25;
     private int size_y = 25;
     public int getSize_x(){return size_x;}
     public int getSize_y(){return size_y;}
+
     public MapTile[][] tiles;
+
     private Pane pane = new Pane();
     public Pane getPane(){return pane;}
     private Group panes = new Group();
+
     public int tileType = 0;
 
     private Player mapPlayer;
     private boolean hasPlayer = false;
+    public boolean getHasPlayer(){return hasPlayer;}
     public void setPlayer(Player player){
+        if(player == null) mapPlayer.isActive = false;
+        else level.setInput(player);
+
         mapPlayer = player;
         hasPlayer = player != null;
     }
-    public boolean getHasPlayer(){return hasPlayer;}
     public Player getPlayer(){return mapPlayer;}
 
     public Map(Level level, int x, int y){
@@ -58,6 +66,9 @@ public class Map {
         }
         pane.getChildren().add(panes);
         generated = true;
+
+        if(hasPlayer)
+            mapPlayer.displayPlayer(true);
     }
 
     public void resetMap(){
@@ -65,9 +76,12 @@ public class Map {
             tiles = new MapTile[size_x][];
             for(int i = 0; i < size_x; i++)
                 tiles[i] = new MapTile[size_y];
-            pane.getChildren().clear();
+            pane.getChildren().remove(panes);
             panes.getChildren().clear();
             generated = false;
+
+            mapPlayer.displayPlayer(false);
+            setPlayer(null);
         }
     }
 
@@ -83,27 +97,17 @@ public class Map {
         if(px >= size_x) px = -1;
         if(py >= size_y) py = -1;
         //if(px == -1 || py == -1) System.out.println(); //Out of map bounds.
-        if(px != -1 && py != -1) {
+        if(px != -1 && py != -1)
             //System.out.println("Click @ " + coor);
-            if(tileType < MapTile.tileAmount){
-                System.out.println("Setting " + coor + " to " + MapTile.findTileName(tileType));
-                tiles[px][py].setTile(tileType);
-            }
-            else{
-                if(tileType == MapTile.tileAmount){
-                    if(hasPlayer)
-                        mapPlayer.setPosition(px, py);
-                    else{
-                        tiles[px][py].setTile(tileType);
-                        Player player = new Player(pane, this, px, py);
-                        setPlayer(player);
-                        level.setInput(player);
-                    }
-                    System.out.println("Player set to " + coor);
-                }
-            }
+        if(tileType <= MapTile.tileAmount) {
+            System.out.println("Setting " + coor + " to " + MapTile.findTileName(tileType));
+            tiles[px][py].setTile(tileType);
+        }
+        else {
+
         }
     }
+
     public int[][] saveLevel(){
         int[][] t = new int[size_x][];
         for(int i = 0; i < size_x; i++){
@@ -112,6 +116,8 @@ public class Map {
                 t[i][j] = tiles[i][j].getTileType();
             }
         }
+        if(hasPlayer)
+            t[mapPlayer.getX()][mapPlayer.getY()] = 2;
         return t;
     }
 
@@ -127,7 +133,8 @@ public class Map {
             tiles[i] = new MapTile[size_y];
             //System.out.println();
             for(int j = 0; j < size_y; j++){
-                tiles[i][j] = new MapTile(this, i, j, t[i][j]);
+                int num = t[i][j];
+                tiles[i][j] = new MapTile(this, i, j, num);
                 //System.out.print(t[i][j] + " ");
                 setPosition(tiles[i][j], i, j);
                 panes.getChildren().add(tiles[i][j].getPane());
@@ -135,6 +142,9 @@ public class Map {
         }
         pane.getChildren().add(panes);
         generated = true;
+
+        if(hasPlayer)
+            mapPlayer.displayPlayer(true);
     }
 
 }
