@@ -24,8 +24,13 @@ public class Map {
     private boolean hasPlayer = false;
     public boolean getHasPlayer(){return hasPlayer;}
     public void setPlayer(Player player){
-        if(player == null) mapPlayer.isActive = false;
-        else level.setInput(player);
+        if(mapPlayer != null) {
+            boolean b = player != null;
+            mapPlayer.displayPlayer(b);
+            if (!b)
+                mapPlayer.isActive = false;
+        }
+        //else if(level.getPlayer() == player && level.hasScene()) level.setInput(player);
 
         mapPlayer = player;
         hasPlayer = player != null;
@@ -80,7 +85,6 @@ public class Map {
             panes.getChildren().clear();
             generated = false;
 
-            mapPlayer.displayPlayer(false);
             setPlayer(null);
         }
     }
@@ -143,8 +147,10 @@ public class Map {
         pane.getChildren().add(panes);
         generated = true;
 
-        if(hasPlayer)
+        if(hasPlayer) {
+            level.setPlayer(mapPlayer);
             mapPlayer.displayPlayer(true);
+        }
     }
 
 }

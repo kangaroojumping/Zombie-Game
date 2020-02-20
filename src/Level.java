@@ -16,9 +16,11 @@ import java.util.Scanner;
 
 public class Level {
     private Scene currentScene;
+    public boolean hasScene(){ return currentScene != null; }
     private int gameMode = -1;
     private Player player;
     public void setPlayer(Player p){player = p;}
+    public Player getPlayer(){return player;}
     private Map map;
     private Pane root;
 
@@ -91,12 +93,12 @@ public class Level {
     }
 
     public void setInput(Player player){
-        if(this.player == null){
+        if(player != this.player){
+            System.out.println("Registering input for player...");
             setPlayer(player);
             registerInput(currentScene, 0);
-        }else
-            setPlayer(player);
-
+        }
+        //else setPlayer(player);
     }
 
     private void shiftElements(){
@@ -124,24 +126,24 @@ public class Level {
         }
     }
 
-    public void saveLevel(String name) {saveLevel(map, name);}
-    public void saveLevel (Map map, String name) {
-        int[][] data = map.saveLevel();
-        PrintStream con = System.out;
-        if(!name.endsWith(".txt")) name += ".txt";
-        try{
-            File f = new File(name);
-            PrintStream ps = new PrintStream(f);
-            System.setOut(ps);
-            for(int i = 0; i < data.length; i++){
-                for(int j = 0; j < data[0].length; j++){
-                    System.out.print(data[i][j] + " ");
+        public void saveLevel(String name) {saveLevel(map, name);}
+        public void saveLevel (Map map, String name) {
+            int[][] data = map.saveLevel();
+            PrintStream con = System.out;
+            if(!name.endsWith(".txt")) name += ".txt";
+            try{
+                File f = new File(name);
+                PrintStream ps = new PrintStream(f);
+                System.setOut(ps);
+                for(int i = 0; i < data.length; i++){
+                    for(int j = 0; j < data[0].length; j++){
+                        System.out.print(data[i][j] + " ");
+                    }
+                    System.out.println();
                 }
-                System.out.println();
+                ps.close();
+                System.setOut(con);
             }
-            ps.close();
-            System.setOut(con);
-        }
         catch (FileNotFoundException e){
             System.out.println("File not found");
         }
@@ -171,6 +173,25 @@ public class Level {
         catch(FileNotFoundException e){
             System.out.println("File couldn't be found.");
         }
+    }
+
+    public Scene loadMap(String name, int mode){
+        Pane root = new Pane();
+        Map map = new Map(this);
+        root.getChildren().add(map.getPane());
+
+        loadLevel(map, name);
+
+        root.setPrefSize(window_width, window_height);
+        Scene newScene = new Scene(root, window_width, window_height);
+
+        gameMode = mode;
+        registerInput(newScene, gameMode);
+        currentScene = newScene;
+
+        //if(map.getHasPlayer())setInput(map.getPlayer());
+
+        return newScene;
     }
 
     private void drawEditControls(){
