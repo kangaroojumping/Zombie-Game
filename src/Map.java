@@ -20,6 +20,9 @@ public class Map {
 
     public int tileType = 0;
 
+    public static int advanceTimer = 20;
+
+    /*
     private Player mapPlayer;
     private boolean hasPlayer = false;
     public boolean getHasPlayer(){return hasPlayer;}
@@ -36,6 +39,7 @@ public class Map {
         hasPlayer = player != null;
     }
     public Player getPlayer(){return mapPlayer;}
+    */
 
     public Map(Level level, int x, int y){
         this.level = level;
@@ -72,8 +76,7 @@ public class Map {
         pane.getChildren().add(panes);
         generated = true;
 
-        if(hasPlayer)
-            mapPlayer.displayPlayer(true);
+        //if(hasPlayer) mapPlayer.displayPlayer(true);
     }
 
     public void resetMap(){
@@ -85,7 +88,7 @@ public class Map {
             panes.getChildren().clear();
             generated = false;
 
-            setPlayer(null);
+            //setPlayer(null);
         }
     }
 
@@ -120,8 +123,8 @@ public class Map {
                 t[i][j] = tiles[i][j].getTileType();
             }
         }
-        if(hasPlayer)
-            t[mapPlayer.getX()][mapPlayer.getY()] = 2;
+
+        //if(hasPlayer) t[mapPlayer.getX()][mapPlayer.getY()] = 2;
         return t;
     }
 
@@ -147,10 +150,12 @@ public class Map {
         pane.getChildren().add(panes);
         generated = true;
 
+        /*
         if(hasPlayer) {
             level.setPlayer(mapPlayer);
             mapPlayer.displayPlayer(true);
         }
+        */
     }
 
 }

@@ -80,6 +80,7 @@ public class MapTile extends StackPane {
         if(m >= MapTile.tileAmount){
             setTile(0);
             if(m == MapTile.tileAmount){
+                /*
                 if (map.getHasPlayer()){
                     System.out.println("Tile placing player @ " + coor(x, y));
                     if(map.getPlayer().getX() != x && map.getPlayer().getY() != y)
@@ -91,7 +92,13 @@ public class MapTile extends StackPane {
                     System.out.println("Tile " + coor(x, y) + " creating player.");
                     map.setPlayer(new Player(map, x, y));
                 }
+                */
             }
         }
     }
+
+    private ZCharacter containedCharacter;
+    public ZCharacter getContainedCharacter(){return containedCharacter;}
+
+
 }

@@ -7,8 +7,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
-
-import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;

@@ -7,6 +7,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -18,10 +25,24 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunManager">
+    <configuration name="AppWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="AppWindow" />
+      <module name="Zombie-Game" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.AppWindow" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -49,10 +70,30 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="549" y="188" key="FileChooserDialogImpl" timestamp="1579797264772">
+    <state x="361" y="92" key="#Project_Structure" timestamp="1583169920571">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="549" y="188" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1579797264772" />
+    <state x="361" y="92" key="#Project_Structure/0.0.1536.864@0.0.1536.864" timestamp="1583169920571" />
+    <state x="549" y="188" key="FileChooserDialogImpl" timestamp="1583169904847">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="549" y="188" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1583169904847" />
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1583181809292">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1583181809292" />
+    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1583181809292">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1583181809292" />
+    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1583181809292">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1583181809292" />
+    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1583181809292">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1583181809292" />
     <state x="249" y="8" key="SettingsEditor" timestamp="1579797228894">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -61,5 +102,9 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="465" y="258" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1579797156438" />
+    <state x="425" y="197" key="run.anything.popup" timestamp="1583170006845">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="425" y="197" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1583170006845" />
   </component>
 </project>
