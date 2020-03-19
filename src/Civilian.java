@@ -15,9 +15,10 @@ public class Civilian {
     private Scene currentScene;
     private int x = 0;
     private int y = 0;
-    private int offset = 3;
+    private int offset = 5;
     private Map map;
-    private Rectangle rect = new Rectangle(MapTile.tileSize + 1, MapTile.tileSize);
+    //private Rectangle rect = new Rectangle(MapTile.tileSize + 1, MapTile.tileSize);
+    private Rectangle rect = new Rectangle(MapTile.tileSize, MapTile.tileSize);
     private Pane pane;
     private Player player;
     private int keyPressCount = 0;
@@ -36,19 +37,32 @@ public class Civilian {
         createCivilian();
     }
 
+    private Image sprite = new Image("png/Walk (1).png");
+    private Image front1 = new Image("new sprite/front 1.png");
+    private Image front2 = new Image("new sprite/front 2.png");
+    private Image front3 = new Image("new sprite/front 3.png");
+    private Image back1 = new Image("new sprite/back 1.png");
+    private Image back2 = new Image("new sprite/back 2.png");
+    private Image back3 = new Image("new sprite/back 3.png");
+    private Image left1 = new Image("new sprite/left 1.png");
+    private Image left2 = new Image("new sprite/left 2.png");
+    private Image left3 = new Image("new sprite/left 3.png");
+    private Image right1 = new Image("new sprite/right 1.png");
+    private Image right2 = new Image("new sprite/right 2.png");
+    private Image right3 = new Image("new sprite/right 3.png");
+
     public void createCivilian() {
         pane.getChildren().add(rect);
-        Image sprite = new Image("png/Walk (1).png");
-        rect.setFill(new ImagePattern(sprite));
-        rect.setTranslateX(x * MapTile.tileSize + offset);
-        rect.setTranslateY(y * MapTile.tileSize + offset);
+        rect.setFill(new ImagePattern(front1));
+        rect.setTranslateX(x * MapTile.tileSize);
+        rect.setTranslateY(y * MapTile.tileSize);
     }
 
     public void setPosition(int x, int y) {
         this.x = x;
         this.y = y;
-        rect.setTranslateX(x * MapTile.tileSize + (offset + 1) / 2);
-        rect.setTranslateY(y * MapTile.tileSize + (offset + 1) / 2);
+        rect.setTranslateX(x * MapTile.tileSize);
+        rect.setTranslateY(y * MapTile.tileSize);
     }
 
     public void registerInput(KeyEvent ke) {
@@ -69,6 +83,7 @@ public class Civilian {
                 if (randomNumber == 0) {
                     if (py != 0) {
                         if (map.tiles[px][py - 1].getTileType() == 0) {
+                            rect.setFill(new ImagePattern(back1));
                             py--;
                         }
                     }
@@ -76,6 +91,7 @@ public class Civilian {
                 if (randomNumber == 1) {
                     if (px != 0) {
                         if (map.tiles[px - 1][py].getTileType() == 0) {
+                            rect.setFill(new ImagePattern(left1));
                             px--;
                         }
                     }
@@ -83,6 +99,7 @@ public class Civilian {
                 if (randomNumber == 2) {
                     if (py != map.getSize_y() - 1) {
                          if (map.tiles[px][py + 1].getTileType() == 0) {
+                             rect.setFill(new ImagePattern(front1));
                              py++;
                          }
                     }
@@ -90,6 +107,7 @@ public class Civilian {
                 if (randomNumber == 3) {
                     if (px != map.getSize_x() - 1) {
                         if (map.tiles[px + 1][py].getTileType() == 0) {
+                            rect.setFill(new ImagePattern(right1));
                             px++;
                         }
                     }
