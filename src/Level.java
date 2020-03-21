@@ -7,20 +7,19 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
-
-import javax.swing.*;
 import java.io.*;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Level {
     private Scene currentScene;
+    public boolean hasScene(){ return currentScene != null; }
     private int gameMode = -1;
     private Player player;
-    private Civilian civilian1;
-    private Civilian civilian2;
+    private Civilian civilian;
+    public void setPlayer(Player p){player = p;}
+    public Player getPlayer(){return player;}
     private Map map;
     private Pane root;
 
@@ -57,12 +56,11 @@ public class Level {
         window_width = map.getSize_x() * MapTile.tileSize;
         window_height = map.getSize_y() * MapTile.tileSize;
         root.getChildren().add(map.getPane());
-        Random rand = new Random();
         if(mode == 0){
-            player = new Player(root, map);
-            civilian1 = new Civilian(root, map, rand.nextInt(MapTile.tileSize), rand.nextInt(MapTile.tileSize));
-            civilian2 = new Civilian(root, map, rand.nextInt(MapTile.tileSize), rand.nextInt(MapTile.tileSize));
-            map.setPlayer(player);
+            player = new Player(map);
+            //map.setPlayer(player);
+            //civil = new Civil(map);
+            //map.setCivil(civil);
         }
         if(mode == 1) {
             window_width += buttonWidth;
@@ -71,23 +69,21 @@ public class Level {
         }
         root.setPrefSize(window_width, window_height);
         Scene newScene = new Scene(root, window_width, window_height);
-        registerInput(newScene);
+        registerInput(newScene, gameMode);
         currentScene = newScene;
         return newScene;
     }
 
-    private void registerInput(Scene scene){
-        if(gameMode == 0){
+    private void registerInput(Scene scene, int m){
+        if(m == 0){
             scene.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
                 @Override
                 public void handle(KeyEvent keyEvent) {
                     player.registerInput(keyEvent);
-                    civilian1.registerInput(keyEvent);
-                    civilian2.registerInput(keyEvent);
                 }
             });
         }
-        else if(gameMode == 1){
+        else if(m == 1){
             scene.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
@@ -98,20 +94,23 @@ public class Level {
     }
 
     public void setInput(Player player){
-        currentScene.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent keyEvent) {
-                player.registerInput(keyEvent);
-            }
-        });
+        if(player != this.player){
+            System.out.println("Registering input for player...");
+            setPlayer(player);
+            registerInput(currentScene, 0);
+        }
+        //else setPlayer(player);
     }
 
     private void shiftElements(){
+        tileBtn.setTranslateX(window_width - buttonWidth);
+        tileBtn.setTranslateY(buttonHeight * 4);
+
         levelText.setTranslateX(window_width - buttonWidth + textWidth / 2 - 20);
         levelText.setTranslateY(tileBtn.getTranslateY() + buttonHeight * 2);
         
         levelField.setTranslateX(window_width - buttonWidth + textWidth);
-        levelField.setTranslateY(levelText.getTranslateY() - buttonHeight/2);
+        levelField.setTranslateY(tileBtn.getTranslateY() + buttonHeight);
 
         for (int i = 0; i < 2; i++) {
             btns[i].setTranslateX(window_width - buttonWidth);
@@ -126,29 +125,26 @@ public class Level {
             slBtns[i].setTranslateX(window_width - buttonWidth);
             slBtns[i].setTranslateY(levelText.getTranslateY() + (buttonHeight * (i + 1)));
         }
-
-        tileBtn.setTranslateX(window_width - buttonWidth);
-        tileBtn.setTranslateY(buttonHeight * 4);
     }
 
-    public void saveLevel(String name) {saveLevel(map, name);}
-    public void saveLevel (Map map, String name) {
-        int[][] data = map.saveLevel();
-        PrintStream con = System.out;
-        if(!name.endsWith(".txt")) name += ".txt";
-        try{
-            File f = new File(name);
-            PrintStream ps = new PrintStream(f);
-            System.setOut(ps);
-            for(int i = 0; i < data.length; i++){
-                for(int j = 0; j < data[0].length; j++){
-                    System.out.print(data[i][j] + " ");
+        public void saveLevel(String name) {saveLevel(map, name);}
+        public void saveLevel (Map map, String name) {
+            int[][] data = map.saveLevel();
+            PrintStream con = System.out;
+            if(!name.endsWith(".txt")) name += ".txt";
+            try{
+                File f = new File(name);
+                PrintStream ps = new PrintStream(f);
+                System.setOut(ps);
+                for(int i = 0; i < data.length; i++){
+                    for(int j = 0; j < data[0].length; j++){
+                        System.out.print(data[i][j] + " ");
+                    }
+                    System.out.println();
                 }
-                System.out.println();
+                ps.close();
+                System.setOut(con);
             }
-            ps.close();
-            System.setOut(con);
-        }
         catch (FileNotFoundException e){
             System.out.println("File not found");
         }
@@ -178,6 +174,25 @@ public class Level {
         catch(FileNotFoundException e){
             System.out.println("File couldn't be found.");
         }
+    }
+
+    public Scene loadMap(String name, int mode){
+        Pane root = new Pane();
+        Map map = new Map(this);
+        root.getChildren().add(map.getPane());
+
+        loadLevel(map, name);
+
+        root.setPrefSize(window_width, window_height);
+        Scene newScene = new Scene(root, window_width, window_height);
+
+        gameMode = mode;
+        registerInput(newScene, gameMode);
+        currentScene = newScene;
+
+        //if(map.getHasPlayer())setInput(map.getPlayer());
+
+        return newScene;
     }
 
     private void drawEditControls(){

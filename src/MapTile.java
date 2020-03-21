@@ -14,8 +14,8 @@ public class MapTile extends StackPane {
     private Map map;
     private int x;
     private int y;
-
-    public static int tileSize = 20;
+    public static String coor(int x, int y){return String.format("[%d, %d]", x, y); }
+    public static int tileSize = 25;
     private Rectangle rect = new Rectangle(tileSize - 1, tileSize - 1);
     private StackPane pane = new StackPane();
     public StackPane getPane(){
@@ -76,8 +76,29 @@ public class MapTile extends StackPane {
             rect.setFill(fillColor);
             rect.setStroke(Color.BLACK);
         }
-        else if(m >= tileAmount){
+
+        if(m >= MapTile.tileAmount){
             setTile(0);
+            if(m == MapTile.tileAmount){
+                /*
+                if (map.getHasPlayer()){
+                    System.out.println("Tile placing player @ " + coor(x, y));
+                    if(map.getPlayer().getX() != x && map.getPlayer().getY() != y)
+                        map.getPlayer().setPosition(x, y);
+                    else if(map.getPlayer().getX() == x && map.getPlayer().getY() == y)
+                        map.setPlayer(null);
+                }
+                else {
+                    System.out.println("Tile " + coor(x, y) + " creating player.");
+                    map.setPlayer(new Player(map, x, y));
+                }
+                */
+            }
         }
     }
+
+    private ZCharacter containedCharacter;
+    public ZCharacter getContainedCharacter(){return containedCharacter;}
+
+
 }

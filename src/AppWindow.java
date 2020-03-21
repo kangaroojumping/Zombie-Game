@@ -29,7 +29,7 @@ public class AppWindow extends Application {
         Level level = new Level();
         btn.setOnAction(e -> {
             System.out.println("Starting...");
-            primaryStage.setScene(level.createMap(0));
+            primaryStage.setScene(level.loadMap("level1",0));
         });
         Button btn2 = new Button("Edit Map");
         btn2.setTranslateY(btn.getTranslateY() + 30);

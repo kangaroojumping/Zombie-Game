@@ -1,39 +1,49 @@
-import javafx.event.ActionEvent;
-import javafx.scene.*;
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
-import java.util.*;
-public class Civilian {
-    private Scene currentScene;
-    private int x = 0;
-    private int y = 0;
-    private int offset = 5;
-    private Map map;
-    //private Rectangle rect = new Rectangle(MapTile.tileSize + 1, MapTile.tileSize);
-    private Rectangle rect = new Rectangle(MapTile.tileSize, MapTile.tileSize);
-    private Pane pane;
-    private Player player;
-    private int keyPressCount = 0;
 
-    public Civilian(Pane pane, Map map) {
-        this.pane = pane;
+import java.util.Random;
+
+public class Civilian {
+    private String characterType;
+    public String getCharacterType(){return characterType;}
+
+    private int maxHP = 3;
+    public int getMapHP(){return maxHP;}
+    private int currentHP = maxHP;
+    public int getCurrentHP(){return currentHP;}
+
+    private int speed = 3;
+    public int getSpeed(){return speed;}
+
+    private int x, y;
+    public int getX(){return x;}
+    public int getY(){return y;}
+    public void moveTo(int x, int y){}
+
+    private Map map;
+    public Map getMap(){return map;}
+
+    private Pane pane;
+    public Pane getPane(){return pane;}
+
+    private int offset = 5;
+    private Rectangle rect = new Rectangle(MapTile.tileSize - offset, MapTile.tileSize - offset);
+
+    public Civilian(Map map){
         this.map = map;
+        map.getPane().getChildren().add(pane);
         createCivilian();
     }
 
-    public Civilian(Pane pane, Map map, int x, int y) {
+    public Civilian(Map map, int x, int y){
         this.x = x;
         this.y = y;
         this.map = map;
-        this.pane = pane;
+        map.getPane().getChildren().add(pane);
         createCivilian();
     }
 
@@ -51,35 +61,49 @@ public class Civilian {
     private Image right2 = new Image("new sprite/right 2.png");
     private Image right3 = new Image("new sprite/right 3.png");
 
-    public void createCivilian() {
+    public void createCivilian(){
         pane.getChildren().add(rect);
         rect.setFill(new ImagePattern(front1));
         rect.setTranslateX(x * MapTile.tileSize);
         rect.setTranslateY(y * MapTile.tileSize);
     }
 
-    public void setPosition(int x, int y) {
+    public void setPosition(int x, int y){
         this.x = x;
         this.y = y;
         rect.setTranslateX(x * MapTile.tileSize);
         rect.setTranslateY(y * MapTile.tileSize);
+        System.out.println("Player is @ " + MapTile.coor(x, y));
+        /*
+        if(!map.getPane().getChildren().contains((pane))) {
+            System.out.println("Making player visible...");
+            map.getPane().getChildren().add(pane);
+            pane.toFront();
+        }
+        */
+
     }
 
-    public void registerInput(KeyEvent ke) {
+    private int playerClicked = 0;
+    public void onClick(){
         if(player == null) {
             if (map.getHasPlayer()) {
                 player = map.getPlayer();
             }
         }
-
+        //Called when clicked from map
+        displayOptions();
         int px = x;
         int py = y;
-        if (ke.getCode() == KeyCode.W || ke.getCode() == KeyCode.A || ke.getCode() == KeyCode.S || ke.getCode() == KeyCode.D) {
-            keyPressCount++;
-            System.out.println("Numbers of Keys Pressed: " + keyPressCount);
+        // for line 101, i'm not sure what the code would be to find out if the player has clicked it's player
+        // and move it's player. So, basically the civilian would move one square in random after the player
+        // has moved twice.
+        if (// player is clicked) {
+            playerClicked++;
+            //System.out.println("Players clicked counter: " + playerClicked);
             Random rand = new Random();
             int randomNumber = rand.nextInt(4);
-            if (keyPressCount % 2 == 0) {
+            if (playerClicked % 2 == 0) {
                 if (randomNumber == 0) {
                     if (py != 0) {
                         if (map.tiles[px][py - 1].getTileType() == 0) {
@@ -98,10 +122,10 @@ public class Civilian {
                 }
                 if (randomNumber == 2) {
                     if (py != map.getSize_y() - 1) {
-                         if (map.tiles[px][py + 1].getTileType() == 0) {
-                             rect.setFill(new ImagePattern(front1));
-                             py++;
-                         }
+                        if (map.tiles[px][py + 1].getTileType() == 0) {
+                            rect.setFill(new ImagePattern(front1));
+                            py++;
+                        }
                     }
                 }
                 if (randomNumber == 3) {
@@ -124,4 +148,18 @@ public class Civilian {
             }
         }
     }
-} // end class Civilian
+
+    public void displayOptions(){
+        // Show (and color) all tiles available to move to
+        // Show (different color) tiles that can be interacted with
+        // Blue for movement, red for enemies, green for items?
+        // Tell map that the player is interacting with this character,
+        // Momentarily pause other map items from being interacted with
+
+        // If interact with object, interactWithObjectAt(area clicked);
+        // If that object is ZCharacter, also call thatObject.beInteractedWith(this);
+    }
+
+    public void interactWithObjectAt(int x, int y){ /* override method */ }
+    public void beInteractedWith(ZCharacter z){ /* also override method */ }
+}
